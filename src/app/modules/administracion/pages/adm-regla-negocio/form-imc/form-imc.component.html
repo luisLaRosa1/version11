@@ -1,0 +1,22 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+
+<div id="body">
+  <h5 class="teggium-titulo">IMC</h5>
+
+  <div class="row mb-2 mt-2">
+    <mat-card-header>
+      <a class="btn btn-primary" (click)="onCreateDialog('Alta de datos')">Nuevo</a>
+    </mat-card-header>
+    
+  </div>
+
+
+  <div id="content" class="align-items-center">
+    <app-kyc-detail-in-table
+      [dataSource]="dataSource"
+      [columns]="columns"
+      (action)="onAction($event)">
+    </app-kyc-detail-in-table>
+  </div>
+
+</div>

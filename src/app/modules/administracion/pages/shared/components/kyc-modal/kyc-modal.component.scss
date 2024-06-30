@@ -1,0 +1,91 @@
+#modal, .modal-dialog {
+    padding: 20px 24px;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+  
+    .teggium-titulo {
+      margin-bottom: 0!important;
+    }
+  
+    &__content form {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+  
+      mat-form-field {
+        width: 100%;
+      }
+  
+      .select_view {
+        display: flex;
+        
+      }
+    }
+  
+    &__buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+  
+      .cancel {
+        background-color: black;
+        color: white;
+      }
+  
+      .ok {
+        background-color: #0eb7e6;
+        color: white;
+      }
+    }
+  }
+  
+  .modal-dialog {
+    width: fit-content;
+    max-width: 90%;
+    height: 100%;
+    margin: 2px;
+  }
+  
+  #modal-body {
+    mat-form-field {
+      // width: 874px;
+      max-width: 90%;
+  
+      // .mat-mdc-form-field-type-mat-select.mat-form-field-disabled mat-select[disabled] {
+      //   color: rgba(black, 0.38);
+      // }
+  
+  //   .mat-select-disabled {
+    //     ::ng-deep .mat-select-value {
+    //       color: red !important;
+    //     }
+    // }
+  
+    //   .mat-select-disabled .mat-select-value {
+    //     color: rgba(black, 0.38);
+    // }
+  
+      textarea:disabled{
+        color: #342e2e;
+      }
+    }
+  
+    .table-info {
+      width: 90%;
+      padding: 0;
+    }
+  }
+  
+  ::ng-deep .mat-mdc-paginator-page-size {
+    margin-left: 1rem !important;
+  }
+  
+  #modal__content {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+.space-btn{
+  margin-right: 16px;
+}

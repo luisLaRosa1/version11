@@ -1,0 +1,8 @@
+<h1 class="teggium-titulo correct-field-title" mat-dialog-title>Deshabilitar Regla</h1>
+<div mat-dialog-content>
+  <p>Estas seguro que quires {{data.disable ? 'deshabilitar' : 'habilitar'}} la regla {{ruleNumber}}?</p>
+</div>
+<div align="end" mat-dialog-actions>
+  <button mat-stroked-button (click)="closeDialog(false)" mat-dialog-close color="primary">Cancelar</button>
+  <button mat-stroked-button color="accent" (click)="closeDialog(true)" cdkFocusInitial>Confirmar</button>
+</div>

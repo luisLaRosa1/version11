@@ -1,0 +1,95 @@
+<!-- <mat-tab-group>
+  <mat-tab label="Expediente"> -->
+    <!-- <ng-template matTabContent> -->
+      <section id="tabla-expediente-archivos" style="margin-top: 20px; margin-left: 10px; width: 97%">
+        <div class="row">
+          <div class="col-md-12 tabla-no-responsive">
+            <mat-table
+            [dataSource]="dataSource"
+            >
+            <!-- <ng-container matColumnDef="sendFormatosFirmados">
+              <mat-header-cell *matHeaderCellDef>
+                Seleccionar
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="border-normal">
+                <mat-slide-toggle
+                [disabled]="readonlyModule  || !blnSendFormatosFirmados"
+                [(ngModel)]="row.sendFormatosFirmados"
+                (change)="changeFormatosFimados(row, $event)"
+                color="primary"
+                ngModel
+              >
+                {{ row.sendFormatosFirmados ? "Sí" : "No" }}</mat-slide-toggle
+              >
+              </mat-cell>
+            </ng-container> -->
+            <ng-container matColumnDef="documento">
+              <mat-header-cell *matHeaderCellDef> Nombre documento </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                  {{ row.documento }}
+              </mat-cell>
+            </ng-container>
+
+              <ng-container matColumnDef="clasificacion">
+                <mat-header-cell *matHeaderCellDef>
+                  Tipo de documento
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  {{ row.categoria }}
+                </mat-cell>
+              </ng-container>
+
+<!-- 
+              <ng-container matColumnDef="archivo">
+                <mat-header-cell *matHeaderCellDef> Archivo </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <img [src]="get_icon(row.filename)" style="width: 10%" />
+                    {{ row.filename }}
+                </mat-cell>
+              </ng-container> -->
+
+              <ng-container matColumnDef="fechaCarga" >
+                <mat-header-cell *matHeaderCellDef>Fecha y hora
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row; let indexRow = index">
+                  {{ row.fechaAlta | pipeDatetimeFormat }}
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="operaciones">
+                <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <button class="btn" style="padding-left: 0px; padding-right: 5px" type="button"
+                    (click)="mostrar(row.id)">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                  <button class="btn" style="padding-left: 0px; padding-right: 5px" type="button"
+                    (click)="click_eliminar(row.id)" *ngIf="mostrarEliminar">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+              <tr class="row-empty" *matNoDataRow>
+                <td class="mat-cell" colspan="5">No hay información para mostrar.</td>
+              </tr>
+            </mat-table>
+            <mat-paginator [length]="length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+              [pageSizeOptions]="itemsPorPage" (page)="onChangePage($event)" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </section>
+    <!-- </ng-template> -->
+  <!-- </mat-tab> -->
+
+  <!-- <mat-tab label="Carga documental">
+    <ng-template matTabContent>
+      <app-kyc-shared-upload *ngIf="!readonlyModule" [documentos]="this.catalogos!.documento" [titular]="folio.titular"
+        [aseguradora]="folio.aseguradoraId" (updateEventUploadEmitter)="updateEventUploadFile($event)">
+      </app-kyc-shared-upload>
+    </ng-template>
+  </mat-tab> -->
+<!-- </mat-tab-group> -->

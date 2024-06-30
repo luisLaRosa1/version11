@@ -1,0 +1,83 @@
+<div class="c-flujo-consulta" [hidden]="flujos.length === 0">
+  <div class="wrapper">
+    <nav>
+      <ul>
+        <ng-container *ngFor="let f of flujos; let i = index">
+          <a
+            (click)="onClickActividad(f)"
+            class="actividad-{{
+              f.estatus !== 'notstarted' ? 'link' : 'nolink'
+            }}"
+          >
+            <div>
+              <img
+                alt="Flujo"
+                src="assets/images/flujo-consulta/flujo/{{ f.path }}.{{
+                  f.estatus
+                }}.svg"
+              />
+            </div>
+            <hr />
+            <h6 class="color-{{ f.estatus }}">{{ f.nombre }}</h6>
+          </a>
+
+          <img
+            *ngIf="i !== flujos.length - 1"
+            class="fc-next"
+            src="assets/images/flujo-consulta/next.svg"
+            alt="Next"
+          />
+        </ng-container>
+        <span class="fc-pipe"></span>
+
+        <a
+          (click)="onClickActividad(flujoContactoTelefonico)"
+          class="actividad-{{
+            flujoContactoTelefonico.estatus !== 'notstarted' ? 'link' : 'nolink'
+          }}"
+        >
+          <div>
+            <img
+              src="assets/images/flujo-consulta/flujo/{{
+                flujoContactoTelefonico.path
+              }}.{{ flujoContactoTelefonico.estatus }}.svg"
+              alt="Flujo Contacto telefónico"
+            />
+          </div>
+          <hr />
+          <h6 class="color-{{ flujoContactoTelefonico.estatus }}">
+            Contacto telefónico
+          </h6>
+        </a>
+
+        <img
+          class="fc-next"
+          src="assets/images/flujo-consulta/next.svg"
+          alt="Next"
+        />
+
+        <a
+          (click)="onClickActividad(flujoContactoAseguradora)"
+          class="actividad-{{
+            flujoContactoAseguradora.estatus !== 'notstarted'
+              ? 'link'
+              : 'nolink'
+          }}"
+        >
+          <div>
+            <img
+              src="assets/images/flujo-consulta/flujo/{{
+                flujoContactoAseguradora.path
+              }}.{{ flujoContactoAseguradora.estatus }}.svg"
+              alt="Flujo Contacto aseguradora"
+            />
+          </div>
+          <hr />
+          <h6 class="color-{{ flujoContactoAseguradora.estatus }}">
+            Contacto aseguradora
+          </h6>
+        </a>
+      </ul>
+    </nav>
+  </div>
+</div>

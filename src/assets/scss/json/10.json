@@ -1,0 +1,49 @@
+{
+  "status": 0,
+  "transactionId": 20240619564846486,
+  "message": "",
+  "data": {
+    "_id": "64ea1bd0890647bb1a0bdfe1",
+    "proyecto": "65c92b8c7f5eaa192c285ae4",
+    "perfil": 1,
+    "pathInicial": "/administracion/perfil",
+    "modulos": [
+      {
+        "descripcion": "Services",
+        "orden": 7,
+        "menus": [
+          {
+            "descripcion": "Datos expediente",
+            "path": "/",
+            "icono": "flaticon-people",
+            "orden": 1,
+            "submenus": [],
+            "expanded": false
+          },
+          {
+            "descripcion": "Documentación Digital",
+            "path": "/",
+            "icono": "flaticon-people",
+            "orden": 2,
+            "submenus": [],
+            "expanded": false
+          }
+        ]
+      },
+      {
+        "descripcion": "Reporte",
+        "orden": 8,
+        "menus": [
+          {
+            "descripcion": "Usuarios",
+            "path": "/",
+            "icono": "flaticon-people",
+            "orden": 1,
+            "submenus": [],
+            "expanded": false
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+
+<mat-card class="mb-25 teggium-card">
+  <mat-card-header>
+    <h5 class="teggium-titulo">Examen Medico</h5>
+    <!-- <a class="btn btn-primary" routerLink="crear">Nuevo</a> -->
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <form [formGroup]="form">
+        <div class="row mb-2 mt-2">
+          <div class="col-12 col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Número</mat-label>
+              <input placeholder="Documento" formControlName="numero" matInput>
+              <mat-icon matPrefix><span class="material-symbols-outlined">pin</span></mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Área</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let item of tipoRuleList" [value]="item.value">{{item.label}}</mat-option>
+              </mat-select>
+              <mat-icon matPrefix><span class="material-symbols-outlined">list</span></mat-icon>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-12 col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Descripción</mat-label>
+              <input placeholder="Documento" formControlName="descripcion" matInput>
+              <mat-icon matPrefix><span class="material-symbols-outlined">mode_comment</span></mat-icon>
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="row mb-2 mt-2">
+          <div class="col-12 col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Examen</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let item of tipoExamenList" [value]="item.value">{{item.label}}</mat-option>
+              </mat-select>
+              <mat-icon matPrefix><span class="material-symbols-outlined">list</span></mat-icon>
+            </mat-form-field>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+
+
+    
+    <div class="row text-end">
+      <div class="col-12">
+          <button type="button" class="btn btn-danger mx-1"  >{{ 
+              "Regresar" }}</button>
+          <button type="submit"   class="btn btn-primary"
+               >Actualizar</button>
+      </div>
+  </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,126 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+
+<mat-card class="mb-25 teggium-card">
+  <mat-card-header>
+    <h5 class="teggium-titulo">Formatos KYC</h5>
+    <a class="btn btn-primary" (click)="create()">Nuevo</a>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-table
+      (matSortChange)="sortChange($event)"
+      matSort
+      matSortDisableClear
+      matSortActive="aseguradora"
+      matSortDirection="asc"
+      [dataSource]="dataSource"
+    >
+      <ng-container matColumnDef="pais">
+        <mat-header-cell *matHeaderCellDef>País</mat-header-cell>
+        <mat-cell *matCellDef="let row" class="border-active">
+          <div class="col-country">
+            <img
+              src="assets/images/catalogs/countries/{{ row.icon }}"
+              alt="icon_flag"
+            />
+            {{ row.pais }}
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="aseguradora">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Aseguradora</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.aseguradora }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="documento">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Documento</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.documento }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tipoPersona">
+        <mat-header-cell *matHeaderCellDef>Tipo persona</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.tipoPersona }}</mat-cell>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef class="col-action"
+          >Acciones</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row" class="col-action">
+          <button
+            type="button"
+            mat-button
+            class="position-relative dot-btn p-0 bg-transparent border-none"
+            [matMenuTriggerFor]="actionMenu"
+          >
+            <i class="ri-more-fill"></i>
+          </button>
+          <mat-menu
+            #actionMenu="matMenu"
+            class="dotMenu two monthMenu"
+            xPosition="before"
+          >
+            <button
+              mat-menu-item
+              type="button"
+              class="bg-transparent border-none position-relative"
+              (click)="detalle(row._id)"
+            >
+              <i class="ri-list-check"></i>Detalle
+            </button>
+            <button
+              mat-menu-item
+              type="button"
+              class="bg-transparent border-none position-relative"
+              (click)="viewDownload(row, true)"
+            >
+              <i class="ri-eye-fill"></i>Previsualizar
+            </button>
+            <button
+              mat-menu-item
+              type="button"
+              class="bg-transparent border-none position-relative"
+              (click)="viewDownload(row, false)"
+            >
+              <i class="ri-download-2-fill"></i>Descargar
+            </button>
+            <button
+              mat-menu-item
+              type="button"
+              class="bg-transparent border-none position-relative"
+              (click)="delete(row._id)"
+            >
+              <i class="ri-delete-bin-6-fill"></i>Borrar
+            </button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        class="table-header"
+      ></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      <tr class="row-empty" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          {{ "general.table.emptyResults" | translate }}
+        </td>
+      </tr>
+    </mat-table>
+
+    <mat-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="itemsPorPage"
+      (page)="onChangePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+  </mat-card-content>
+</mat-card>

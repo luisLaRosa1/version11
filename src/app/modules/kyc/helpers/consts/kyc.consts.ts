@@ -1,0 +1,23 @@
+export const KycConsts = {
+  PERMISSIONS: {
+    // dashboard: 'dashboard',
+    bandeja_entradas: 'bandeja-entrada',
+    bandeja_reprocesos: 'bandeja-reproceso',
+    bandeja_suspendidas: 'bandeja-suspendida',
+    bandeja_programadas: 'bandeja-programada',
+    busquedas: 'busquedas',
+    nuevo_folio: 'nuevo-folio',
+    solicitud: 'solicitud',
+    carga_documental: 'carga-documental',
+    validacion_digital: 'validacion-digital',
+    cotejo: 'cotejo',
+    firma_cliente: 'firma-cliente',
+    firma_ejecutivo: 'firma-ejecutivo',
+    validacion_firmas: 'validacion-firmas',
+    confirmacion_entrega: 'confirmacion-entrega',
+    contacto_telefonico: 'contacto-telefonico',
+    contacto_aseguradora: 'contacto-aseguradora',
+    carga_documental_masiva: 'carga-documental-masiva',
+    lista_negra: 'lista-negra',
+  },
+};

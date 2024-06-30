@@ -1,0 +1,48 @@
+.loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centrado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-move-imc{
+    margin-right: 20px;
+}
+
+.move-right-label{
+    padding-right: 3vh;
+}
+
+.without-border{
+    border: none;
+}
+
+.table tbody tr td:first-child {
+    vertical-align: middle !important;
+}
+
+.ancho-fila{
+    width: 50%!important;
+}
+
+///////////////////////////////////// INPUT ///////////////////////////////////
+.ancho-tarifa-label{
+    display: flex;
+    align-items: center;
+}
+
+.with-input-tarifas{
+    width: 9vh;
+}

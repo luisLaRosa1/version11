@@ -1,0 +1,34 @@
+.filters-row {
+  display: flex;
+  gap: 1rem;
+
+  .small {
+    min-width: 180px
+  }
+}
+
+.table-container {
+  margin-bottom: 2rem;
+}
+
+.first {
+  margin-top: 2rem;
+}
+
+
+.mat-column-penalty{
+  width: 15%;
+}
+
+.mat-column-doesRuleApply{
+  width: 15%;
+}
+
+.move-right-label{
+  padding-right: 3vh;
+}
+
+
+.left-move-imc{
+  font-weight: 900;
+}

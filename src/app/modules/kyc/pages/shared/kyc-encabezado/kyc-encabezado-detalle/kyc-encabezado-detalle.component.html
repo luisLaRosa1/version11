@@ -1,0 +1,114 @@
+<div style="margin-bottom: 15px"></div>
+
+<mat-accordion>
+
+  <mat-expansion-panel
+  #mepExpedienteDigital
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header class="toggle">
+    <mat-panel-title
+      [ngClass]="{
+        'panel-title': true,
+        active: mepExpedienteDigital.expanded
+      }"
+      ><span class="mititle">Información de participantes</span></mat-panel-title
+    >
+    <mat-panel-description></mat-panel-description>
+  </mat-expansion-panel-header>
+  <ng-template matExpansionPanelContent>
+    <app-kyc-encabezado-participantes></app-kyc-encabezado-participantes>
+  </ng-template>
+</mat-expansion-panel>
+
+  <mat-expansion-panel
+    #mepExpedienteDigital
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header class="toggle">
+      <mat-panel-title
+        [ngClass]="{
+          'panel-title': true,
+          active: mepExpedienteDigital.expanded
+        }"
+        ><span class="mititle">Documentos</span></mat-panel-title
+      >
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <app-kyc-encabezado-expediente></app-kyc-encabezado-expediente>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    #mepHistorialExpediente
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header class="toggle">
+      <mat-panel-title
+        [ngClass]="{
+          'panel-title': true,
+          active: mepHistorialExpediente.expanded
+        }"
+        ><span class="mititle">Historial del expediente</span></mat-panel-title
+      >
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <app-kyc-encabezado-historial></app-kyc-encabezado-historial>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    #mepBitacoraActividades
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header class="toggle">
+      <mat-panel-title
+        [ngClass]="{
+          'panel-title': true,
+          active: mepBitacoraActividades.expanded
+        }"
+        ><span class="mititle">Bitácora de actividades</span>
+      </mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <app-kyc-encabezado-bitacora></app-kyc-encabezado-bitacora>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    #mepHistorialTelefonico
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header class="toggle">
+      <mat-panel-title
+        [ngClass]="{
+          'panel-title': true,
+          active: mepHistorialTelefonico.expanded
+        }"
+        ><span class="mititle">Historial telefónico</span>
+      </mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <app-kyc-historial-contacto-telefonico></app-kyc-historial-contacto-telefonico>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <!-- <mat-expansion-panel *ngIf="showComponentCotejo" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="toggle">
+            <mat-panel-title class="panel-title">Documentos a cotejar </mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <app-kyc-encabezado-cotejo></app-kyc-encabezado-cotejo>
+        </ng-template>
+    </mat-expansion-panel> -->
+</mat-accordion>

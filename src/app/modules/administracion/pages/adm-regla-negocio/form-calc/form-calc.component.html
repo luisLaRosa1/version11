@@ -1,0 +1,105 @@
+
+
+
+  <mat-card>
+    <mat-card-content>
+      <div class="row mb-2 mt-4">
+        <div class="col-4 col-md-4">
+          <mat-label>Calculos:</mat-label>
+          <input class="form-control" #cartInput [formControl]="cartCtrl" [matChipInputFor]="chipGrid2" [matAutocomplete]="autoCart"/>
+          <mat-autocomplete #autoCart="matAutocomplete" (optionSelected)="selected($event.option.viewValue, 'cart')">
+              <mat-option *ngFor="let cart of allCart" [value]="cart">
+                  {{cart}}
+              </mat-option>
+          </mat-autocomplete>
+        </div>
+      
+        <div class="col-4 col-md-4">
+          <mat-label>Variables:</mat-label>
+          <input class="form-control" #fruitInput [formControl]="fruitCtrl"  [matAutocomplete]="auto"/>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event.option.viewValue, 'fruit')">
+              <mat-option *ngFor="let fruit of allFruits" [value]="fruit">
+                  {{fruit}}
+              </mat-option>
+          </mat-autocomplete>
+        </div>
+      
+        <div class="col-4 col-md-4 d-flex justify-content-around">
+          <button class="btn btn-primary btn-lg" (click)="selected('+', 'sum')">+</button>
+          <button class="btn btn-primary btn-lg" (click)="selected('-', 'rest')">-</button>
+          <button class="btn btn-primary btn-lg" (click)="selected('/', 'equals')">/</button>
+          <button class="btn btn-primary btn-lg" (click)="selected('*', 'equals')">*</button>
+        </div><br>
+      </div>
+      <br>
+      
+      <!---------------------------------------- Listing card and fruit -------------------------------------->
+      <div class="row d-flex align-items-center">
+        <div class="col-4 center-list-chip">
+          <mat-card-content>
+              <mat-chip-grid #chipGrid2 aria-label="List of carts">
+                <mat-chip-row  *ngFor="let cart of arrayForm" (removed)="remove(cart)">
+                    {{cart}}
+                    <button matChipRemove [attr.aria-label]="'Remove ' + cart">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+              </mat-chip-grid>
+          </mat-card-content>
+        </div>
+        
+      
+        <div class="col-4">
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+        
+      </div>
+    </mat-card-content>
+  </mat-card><br><br>
+
+  <!----------------------------------------- Datable ---------------------------------------------------->
+  <mat-card>
+    <mat-card-content>
+      <div class="row mb-2 mt-4">
+        <div class="col-12">
+    
+          <div class="">
+            <mat-table mat-table matSort matSortDisableClear [dataSource]="data">
+              <ng-container matColumnDef="tipo">
+                <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+                <mat-cell *matCellDef="let row" [ngClass]="'border-active'">
+                  {{row.tipo}}
+                </mat-cell>
+              </ng-container>
+    
+              <ng-container matColumnDef="formula">
+                <mat-header-cell *matHeaderCellDef>Formula</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.formula}}</mat-cell>
+              </ng-container>
+    
+              <ng-container matColumnDef="action">
+                  <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item > <mat-icon>edit</mat-icon>
+                        <span>Editar</span></button>
+                    </mat-menu>
+                  </mat-cell>
+              </ng-container>
+    
+              <mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+              <tr class="row-empty" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay información para mostrar.</td>
+              </tr>
+            </mat-table>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+

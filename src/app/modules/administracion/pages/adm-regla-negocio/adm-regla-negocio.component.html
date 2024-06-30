@@ -1,0 +1,94 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+<mat-card class="mb-25 ">
+  <mat-card-header>
+    <h5 class="teggium-titulo">Reglas</h5>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row mb-2 mt-2">
+
+      <div class="col-12 col-md-4">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Estado</mat-label>
+          <mat-select [formControl]="statusSelected">
+            <mat-option *ngFor="let item of statusList" [value]="item.value">{{item.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Área</mat-label>
+          <mat-select [formControl]="ruleTypeSelected">
+            <mat-option *ngFor="let item of tipoRuleList" [value]="item.value">{{item.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Producto</mat-label>
+          <mat-select [formControl]="productoSelected">
+            <mat-option *ngFor="let item of tipoProduct" [value]="item.value">{{item.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+    </div><!--migrado-->
+    <div class="table-container" style="margin: 0 auto;">
+      <!-- <div class="loading-shade" *ngIf="isLoadingResults ">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      </div> -->
+
+      <mat-table mat-table matSort matSortActive="number" matSortDirection="asc" matSortDisableClear
+        [dataSource]="dataSource">
+        <!-- <ng-container matColumnDef="number">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Numero </mat-header-cell>
+          <mat-cell *matCellDef="let row; let index = index" class="border-normal">{{row.number}}</mat-cell>
+        </ng-container> -->
+
+        <ng-container matColumnDef="message">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </mat-header-cell>
+          <mat-cell *matCellDef="let row; let index = index">{{getRuleTye(row.type)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Area </mat-header-cell>
+          <mat-cell *matCellDef="let row; let index = index">{{row.message}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+          <mat-cell *matCellDef="let row; let index = index">
+            {{row.disabled ? 'Deshabilitada' : 'Habilitada'}}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="goToEditRules(element.number, element.type)"> <mat-icon>edit</mat-icon>
+                <span>Editar</span></button>
+              <!-- <button mat-menu-item *ngIf="!element.disabled" (click)="disableRule(element.number, true)">
+                <mat-icon>cancel</mat-icon><span>Deshabilitar</span></button> -->
+              <button mat-menu-item *ngIf="element.disabled" (click)="disableRule(element.number, false)">
+                <mat-icon>check_circle</mat-icon><span>Habilitar</span></button>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator [length]="totalRulesCount" [hidden]="dataSource.length === 0" #paginator showFirstLastButtons
+        [pageSizeOptions]="pageSizeOptions">
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

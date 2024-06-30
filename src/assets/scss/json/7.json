@@ -1,0 +1,55 @@
+{
+  "status": 0,
+  "transactionId": 20240619564846486,
+  "message": "",
+  "data": {
+    "_id": "64ea1bd0890647bb1a0bdfe1",
+    "proyecto": "65c92b8c7f5eaa192c285ae4",
+    "perfil": 1,
+    "pathInicial": "/administracion/perfil",
+    "modulos": [
+      {
+        "descripcion": "Usuarios",
+        "orden": 1,
+        "menus": [
+          {
+            "descripcion": "Perfil de usuario",
+            "path": "/administracion/perfil",
+            "icono": "flaticon-people",
+            "orden": 1,
+            "submenus": [],
+            "expanded": false
+          }
+        ]
+      },
+      {
+        "descripcion": "Actividades",
+        "orden": 4,
+        "menus": [
+          {
+            "descripcion": "Reaseguro",
+            "path": "/",
+            "icono": "flaticon-people",
+            "orden": 2,
+            "submenus": [],
+            "expanded": false
+          }
+        ]
+      },
+      {
+        "descripcion": "Informe",
+        "orden": 6,
+        "menus": [
+          {
+            "descripcion": "QcQ",
+            "path": "/",
+            "icono": "flaticon-people",
+            "orden": 1,
+            "submenus": [],
+            "expanded": false
+          }
+        ]
+      }
+    ]
+  }
+}

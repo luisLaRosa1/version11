@@ -1,0 +1,115 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+
+<mat-card class="mb-25 teggium-card">
+  <mat-card-header>
+    <h5 class="teggium-titulo">Lista negra</h5>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-table
+      (matSortChange)="sortChange($event)"
+      mat-table
+      matSort
+      matSortDisableClear
+      matSortActive="fechaAlta"
+      matSortDirection="desc"
+      [dataSource]="dataSource"
+    >
+      <ng-container matColumnDef="folioMultisistema">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Folio</mat-header-cell
+        >
+        <mat-cell
+          *matCellDef="let row; let index = index"
+          class="border-normal"
+          >{{ row.folioCodigo }}</mat-cell
+        >
+      </ng-container>
+      <ng-container matColumnDef="cliente">
+        <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+        <mat-cell *matCellDef="let row; let index = index">{{
+          row.nombre
+        }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="tipoContribuyente">
+        <mat-header-cell *matHeaderCellDef>
+          Tipo contribuyente
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row; let index = index">{{
+          row.tipoPersona
+        }}</mat-cell>
+      </ng-container>
+      <!-- <ng-container matColumnDef="pais">
+        <mat-header-cell *matHeaderCellDef> País </mat-header-cell>
+        <mat-cell *matCellDef="let row; let index = index">{{
+          row.pais
+        }}</mat-cell>
+      </ng-container> -->
+      <ng-container matColumnDef="fechaEnvio">
+        <mat-header-cell *matHeaderCellDef> Fecha envio </mat-header-cell>
+        <mat-cell *matCellDef="let row; let index = index">{{
+          row.fechaEnvio | pipeDatetimeFormat
+        }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fechaAutorizacion">
+        <mat-header-cell *matHeaderCellDef> Fecha autorización </mat-header-cell>
+        <mat-cell *matCellDef="let row; let index = index">{{
+          row.fechaAutorizacion | pipeDatetimeFormat
+        }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="autorizado">
+        <mat-header-cell *matHeaderCellDef>¿Autorizado?</mat-header-cell>
+        <mat-cell *matCellDef="let element; let index = index">
+          <mat-slide-toggle
+            [disabled]="this.userSession.proyecto.rol.clave != 7"
+            [(ngModel)]="element.changeAutorizar"
+            (change)="onChangeCheck(element)"
+            color="primary"
+            [checked]="element.autorizar"
+            name="Check{{ index }}{{ element.id }}"
+          >
+            {{ element.changeAutorizar ? "Sí" : "No" }}</mat-slide-toggle
+          >
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row
+        *matHeaderRowDef="displayColumns"
+        class="table-header"
+      ></mat-header-row>
+      <mat-row
+        *matRowDef="let row; let i = index; columns: displayColumns"
+      ></mat-row>
+
+      <tr class="row-empty" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No hay información para mostrar.</td>
+      </tr>
+    </mat-table>
+
+    <mat-paginator
+      [hidden]="length === 0"
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="itemsPorPage"
+      (page)="onChangePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+
+    <div class="row text-end">
+      <div class="col-12 mt-2 mb-2">
+        <button
+          type="button"
+          class="btn btn-danger mx-1"
+          [routerLink]="'/busquedas'"
+        >
+          Cancelar
+        </button>
+        <button 
+        *ngIf="this.userSession.proyecto.rol.clave == 7"
+        type="button" class="btn btn-primary" (click)="submit()">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

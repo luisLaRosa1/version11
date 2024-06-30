@@ -1,0 +1,65 @@
+<div id="modal">
+    <h5 class="teggium-titulo">{{ data.title }}</h5>
+    <div id="modal__content">
+          {{ data.info }}
+          <form [formGroup]="data.form.group">
+            <div *ngFor="let config of data.form.config; let i=index" style="width: 100%;">
+
+                  <mat-form-field *ngIf="config.type === 0">
+                    <mat-label>{{ config.label }}</mat-label>
+                    <input matInput [formControlName]="config.formControlName">
+                  </mat-form-field>
+
+
+
+                  <div class="container align-items-center">
+                          <div class="row" *ngIf="config.type === 2">
+                                <div class="col-md-4 d-flex align-items-center" style="width: 26%;">
+                                  <label>Comparación:</label>
+                                </div>
+                                <div class="col-1 col-md-1" style="width: 16%">
+                                  <mat-form-field appearance="outline" class="w-100">
+                                    <input matInput value=">=" />
+                                  </mat-form-field>
+                                </div>
+
+
+                                <div class="col-md-6 d-flex align-items-center" style="width: 30%;">
+                                  <label>Valor base {{i+1}}:</label>
+                                </div>
+                                <div class="col-1 col-md-1" style="width: 28%">
+                                  <mat-form-field appearance="outline" class="w-100">
+                                    <input matInput value="0.2" />
+                                  </mat-form-field>
+                                </div>
+                          </div>
+
+                          <br>
+
+                          <div class="row" *ngIf="config.type === 3">
+                            <div class="col-md-12">
+                              <label>¿Aplica exámen medico?:</label>
+                              <mat-checkbox class="example-margin" [checked]="true"></mat-checkbox>
+                            </div>
+                          </div>
+
+                  </div>
+
+      
+            </div>
+          </form><!--Data que  imprimira-->
+    </div>
+
+    <div id="modal__buttons" class="container_btn d-flex justify-content-between">
+        <div *ngIf="data.buttonOkName !== 'Guardar'" class="caja1">
+          <mat-slide-toggle>Activar</mat-slide-toggle>
+        </div>
+      
+        <div class="caja2">
+          <button mat-button mat-dialog-close class="btn btn-danger space-btn">{{ data.buttonCancelName }}</button>
+          <button type="submit" class="btn btn-primary" (click)="onCloseModal()">
+            {{ data.buttonOkName }}
+          </button>
+        </div>
+    </div><!--Btn use in the modal-->
+</div>

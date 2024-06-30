@@ -1,0 +1,341 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+<mat-card class="mb-25" [formGroup]="form">
+    <mat-card-header>
+      <h5 class="teggium-titulo">Tarifas</h5>
+    </mat-card-header><br><br>
+
+    <!-- <mat-card-content >
+      <br><br>
+
+
+      <div class="row">
+            <div class="col-md-2 d-flex align-items-center">
+              <label>Número de tarifas:</label>
+            </div>
+
+            <div class="col-1 col-md-1">
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput formControlName="nTarifas"/>
+              </mat-form-field>
+            </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 d-flex align-items-center">
+          <label>#:</label>
+        </div>
+
+        <div class="col-4 col-md-4">
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput formControlName="tarifaTitular"/>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+          <div class="col-md-2 d-flex align-items-center">
+            <label>Tarifa TI + 1 OS:</label>
+          </div>
+          <div class="col-4 col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput formControlName="tarifa1" />
+            </mat-form-field>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-2 d-flex align-items-center">
+            <label>Tarifa TI + 2 OS:</label>
+          </div>
+          <div class="col-4 col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput formControlName="tarifa2" />
+            </mat-form-field>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 d-flex align-items-center">
+          <label>Tarifa TI + 3 OS:</label>
+        </div>
+        <div class="col-4 col-md-4">
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput formControlName="tarifa3" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 d-flex align-items-center">
+          <label>Tarifa TI + 4 OS:</label>
+        </div>
+        <div class="col-4 col-md-4">
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput formControlName="tarifa4" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 d-flex align-items-center"><label>Total:</label></div>
+        <div class="col-4 col-md-4">
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput formControlName="total" />
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+  
+    <mat-card-content>
+      <div class="row mb-2 mt-4">
+        <div class="col-12">
+
+          <div class="">
+            <mat-table mat-table matSort matSortDisableClear [dataSource]="data">
+              <ng-container matColumnDef="codigo">
+                <mat-header-cell *matHeaderCellDef>Fallecimiento:</mat-header-cell>
+                <mat-cell *matCellDef="let row" [ngClass]="'border-active'">
+                  {{row.codigo}}
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="descripcion">
+                <mat-header-cell *matHeaderCellDef>Invalidez</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.descripcion}}</mat-cell>
+              </ng-container>
+
+
+              <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef>Desempleo</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.accion}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="total">
+                <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.total}}</mat-cell>
+              </ng-container>
+
+                  <ng-container matColumnDef="action2">
+                    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_horiz</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item > <mat-icon>edit</mat-icon>
+                          <span>Editar</span></button>
+                      </mat-menu>
+                    </mat-cell>
+                  </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+              <tr class="row-empty" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay información para mostrar.</td>
+              </tr>
+            </mat-table>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      <mat-card-header>
+        <a class="btn btn-primary">Actualizar</a>
+      </mat-card-header>
+    </mat-card-content> -->
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+        <div class="ancho-tarifa-label">
+            <div>
+              <label class="me-2">N° de tarifas:</label>
+            </div>
+            <div class="with-input-tarifas">
+              <input type="text" class="form-control" id="t2" placeholder="#">
+          </div>
+        </div>
+        <br><br>
+
+
+      <div class="row">
+          <div class="col-5 table-responsive">
+            <table class="table table-bordered table-sm">
+              <thead>
+                <tr class="text-center">
+                  <th  scope="col">Descripción</th>
+                  <th  scope="col">Tarifa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="ancho-fila">Tarifa Titula:</td>
+                  <td class="ancho-fila" class="text-end">
+                    <div class="d-flex justify-content-end">
+                      <div class="with-input-tarifas">
+                        <input type="text" class="form-control" id="t1" placeholder="#">
+                      </div>
+                    </div>       
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tarifa Titula TI + 1OS</td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <div class="with-input-tarifas">
+                        <input type="text" class="form-control" id="t2" placeholder="#">
+                      </div>
+                    </div>        
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tarifa Titula TI + 2OS</td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <div class="with-input-tarifas">
+                        <input type="text" class="form-control" id="t2" placeholder="#">
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tarifa Titula TI + 3OS</td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <div class="with-input-tarifas">
+                        <input type="text" class="form-control" id="t2" placeholder="#">
+                      </div>
+                    </div> 
+                  </td>
+                </tr>
+                <tr class="without-border">
+                  <td class="without-border"></td>
+                  <td class="without-border" colspan="2">
+                    <div class="row  d-flex align-items-center justify-content-end">
+                      <div class="col-md-2">
+                        <label>Total: </label>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control" id="t2" placeholder="#">
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="row text-end">
+              <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Actualizar</button>
+                  <button type="button" class="btn btn-danger mx-1">Cancelar</button>
+              </div>
+            </div><br><br>
+      </div>
+
+
+
+
+      <div class="col-2"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="col-5">
+            <div class="col-12">
+              <div class="">
+                <mat-table mat-table matSort matSortDisableClear [dataSource]="data">
+                  <ng-container matColumnDef="codigo">
+                    <mat-header-cell *matHeaderCellDef>Fallecimiento</mat-header-cell>
+                    <mat-cell *matCellDef="let row" [ngClass]="'border-active'">
+                      {{row.codigo}}
+                    </mat-cell>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="descripcion">
+                    <mat-header-cell *matHeaderCellDef>Invalidez</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.descripcion}}</mat-cell>
+                  </ng-container>
+    
+    
+                  <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef>Desempleo</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.accion}}</mat-cell>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.total}}</mat-cell>
+                  </ng-container>
+    
+                      <!-- <ng-container matColumnDef="action2">
+                        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                          <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon>more_horiz</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item > <mat-icon>edit</mat-icon>
+                              <span>Editar</span></button>
+                          </mat-menu>
+                        </mat-cell>
+                      </ng-container> -->
+    
+                  <mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+                  <tr class="row-empty" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No hay información para mostrar.</td>
+                  </tr>
+                </mat-table>
+              </div>
+            </div>
+            <div class="row text-end">
+              <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Actualizar</button>
+              </div>
+            </div><br><br>
+      </div>
+  </div>
+</div>
+    
+    
+    
+</mat-card>

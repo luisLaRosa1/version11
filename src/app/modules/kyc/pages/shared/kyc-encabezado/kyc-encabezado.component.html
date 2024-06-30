@@ -1,0 +1,78 @@
+<div class="c-encabezado">
+  <div class="c-encabezado-inner">
+    <div class="row-right">
+      <button class="btn-more" (click)="mostrarDetalle=!mostrarDetalle">
+        {{ mostrarDetalle ? 'Ocultar detalles' : 'Ver detalles'}}
+        <i class="flaticon-search"></i>
+      </button>
+    </div>
+    <div class="c-encabezado-body">
+      <div class="row">
+        <div class="col-md-3">
+          <label>Expediente:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.folio }}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <label>Nombres:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.nombres }}</span>
+        </div>
+        <div class="col-md-3">
+          <label>Apellidos:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.apellidos }}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <label>Tipo solicitud:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.tipoSolicitud }}</span>
+        </div>
+        <div class="col-md-3">
+          <label>Fecha solicitud:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.fechaSolicitud | pipeDateFormat }}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <label>Edad:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.edad }}</span>
+        </div>
+        <div class="col-md-3">
+          <label>Tipo producto:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.tipoProducto }}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <label>Monto de credito:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.montoCrediticio }}</span>
+        </div>
+        <div class="col-md-3">
+          <label>Estatus:</label>
+        </div>
+        <div class="col-md-3">
+          <span>{{ header.estatus }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <app-kyc-encabezado-detalle *ngIf="mostrarDetalle"></app-kyc-encabezado-detalle>
+</div>

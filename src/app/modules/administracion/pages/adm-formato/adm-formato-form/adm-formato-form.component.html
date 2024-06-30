@@ -1,0 +1,174 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+<mat-card class="mb-25 teggium-card">
+  <mat-card-header>
+    <h5 class="teggium-titulo">{{ title }} formato</h5>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="frmFormatoKyc" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field  *ngIf="action === formAction.CREATE" appearance="outline" style="width: 100%">
+            <mat-label>Seleccionar un archivo <b>({{ allowedExtensions }})</b></mat-label>
+            <mat-icon
+              style="cursor: pointer"
+              mat-icon-button
+              matSuffix
+              (click)="inputFile.click()"
+            >
+              <span class="material-symbols-outlined">attach_file</span>
+            </mat-icon>
+            <input type="text" readonly matInput formControlName="file" />
+            <input
+              type="file"
+              [accept]="allowedExtensions"
+              hidden
+              #inputFile
+              (change)="getSelectedFiles(inputFile.files)"
+            />
+          </mat-form-field>
+
+          <mat-form-field
+            *ngIf="action === formAction.VIEW"
+            appearance="outline"
+            class="w-100"
+          >
+            <mat-label>Nombre de archivo</mat-label>
+            <input
+              type="text"
+              matInput
+              maxlength="35"
+              formControlName="nombre"
+            />
+            <mat-icon matPrefix>person_outline</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>País</mat-label>
+            <mat-select formControlName="pais">
+              <mat-select-trigger>
+                <div class="custom-select-country-select">
+                  <img
+                    *ngIf="currentCountry?.icon"
+                    class="custom-select-country-select-img"
+                    src="assets/images/catalogs/countries/{{
+                      currentCountry?.icon
+                    }}"
+                    alt=""
+                  />
+                  <span>{{ currentCountry?.descripcion }}</span>
+                </div>
+              </mat-select-trigger>
+              <mat-option *ngFor="let pais of paises" [value]="pais.clave">
+                <img
+                  *ngIf="pais.icon"
+                  class="custom-select-country-option-img"
+                  src="assets/images/catalogs/countries/{{ pais.icon }}"
+                  alt="País"
+                />
+                <span> {{ pais.descripcion }}</span>
+              </mat-option>
+            </mat-select>
+            <mat-icon matPrefix
+              ><span class="material-symbols-outlined">flag</span></mat-icon
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Aseguradora ({{ aseguradora.length }})</mat-label>
+            <input
+              type="text"
+              placeholder="Aseguradora"
+              aria-label="Number"
+              matInput
+              formControlName="aseguradora"
+              [matAutocomplete]="auto">
+            <mat-error>Seleccione una aseguradora</mat-error>
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let item of aseguradora" [value]="item.nombreComercial">
+                {{ item.nombreComercial }}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-icon matPrefix><span class="material-symbols-outlined">cases</span></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Proyecto ({{ proyecto.length }})</mat-label>
+            <mat-select formControlName="proyecto">
+              <mat-option
+                *ngFor="let proyecto of proyecto"
+                [value]="proyecto._id"
+              >
+                {{ proyecto.codigo }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matPrefix
+              ><span class="material-symbols-outlined"
+                >devices_fold</span
+              ></mat-icon
+            >
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Documento</mat-label>
+            <mat-select formControlName="documento">
+              <mat-option *ngFor="let doc of documento" [value]="doc._id">
+                {{ doc.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matPrefix
+              ><span class="material-symbols-outlined"
+                >description</span
+              ></mat-icon
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <mat-form-field
+            appearance="outline"
+            class="w-100"
+            *ngIf="frmFormatoKyc"
+          >
+            <mat-label>Tipo de persona</mat-label>
+            <mat-select formControlName="tipoPersona" multiple>
+              <mat-option
+                *ngFor="let persona of tipoPersona; index as i"
+                [value]="persona.clave"
+                (onSelectionChange)="onChangeTipoPersona(i, persona.clave)"
+              >
+                {{ persona.descripcion }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matPrefix
+              ><span class="material-symbols-outlined"
+                >supervisor_account</span
+              ></mat-icon
+            >
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row text-end">
+        <div class="col-12">
+          <button type="button" class="btn btn-danger mx-1" (click)="return()">
+            {{ action === 2 ? "Regresar" : "Cancelar" }}
+          </button>
+          <button type="submit" class="btn btn-primary" *ngIf="action !== 2">
+            {{ action === 0 ? "Guardar" : "Actualizar" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

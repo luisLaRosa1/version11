@@ -1,0 +1,148 @@
+
+
+
+
+<mat-tab-group>
+  <mat-tab label="Lista Cúmulos">
+      <app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+      <div id="body">
+          <!-- <h5 class="teggium-titulo">Cúmulos</h5> -->
+        
+          <div class="row mb-2 mt-2">
+              <mat-card-header>
+                <a class="btn btn-primary" (click)="onCreateDialog('Alta de datos')">Nuevo</a>
+              </mat-card-header>
+              <br><br>
+          
+          </div>
+          <div id="content">
+            <app-kyc-detail-in-table
+              [dataSource]="dataSource"
+              [columns]="columns"
+              (action)="onAction($event)">
+            </app-kyc-detail-in-table>
+          </div>
+      </div>
+  </mat-tab>
+
+
+
+  <mat-tab label="Carga masiva Cúmulos">
+      <mat-card class="mb-25 teggium-card">
+          <!-- <mat-card-header>
+            <h5 class="teggium-titulo">
+                Cúmulos
+            </h5>
+          </mat-card-header> -->
+        
+          <mat-card>
+                <div class="c-encabezado">
+                    <h5 style="font-size: 2.1vh;">Estatus última actualización</h5>
+                    <div class="c-encabezado-inner">
+                        <div class="c-encabezado-body">
+                            <div class="row">
+                            <div class="col-md-2">
+                                <label>Nombre de archivo:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <span>Cumulos.xlx</span>
+                            </div>
+                            </div>
+                        
+                    
+                            <div class="row">
+                                <div class="col-md-2">
+                                <label>Fecha:</label>
+                                </div>
+                                <div class="col-md-10">
+                                <span>24/06/2024</span>
+                                </div>
+                            </div>
+            
+                            <div class="row">
+                                <div class="col-md-2">
+                                <label>Usuario:</label>
+                                </div>
+                                <div class="col-md-10">
+                                <span>Carlos martinez F.</span>
+                                </div>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+          </mat-card><br>
+          
+          <mat-card>
+              <mat-card-header>
+                  <h5 class="teggium-titulo">
+                    Carga masiva
+                  </h5>
+              </mat-card-header>
+              <div class="c-encabezado">
+                  <mat-card-content>
+                      <form>
+                          <div class="row">
+                              <div class="col-md-8">
+                                  <mat-form-field appearance="outline" style="width: 100%">
+                                      <mat-label
+                                      >{{ "kyc.core.folio.nuevo.placeholderFile" | translate }}
+                                      <b>.xls .xlsx</b></mat-label
+                                      >
+                                      <mat-icon
+                                      class="attach-file"
+                                      mat-icon-button
+                                      matSuffix
+                                      >
+                                      <span class="material-symbols-outlined">attach_file</span>
+                                      </mat-icon>
+                                      <input type="text" readonly matInput/>
+                                      <input
+                                      type="file"
+                                      hidden
+                                      #inputFile
+                                      />
+                                  </mat-form-field>
+                              </div>
+          
+                                                  
+                              <div class="col-md-4 text-end">
+                                  <div class="space_icon_downdoad">
+                                    <h5 class="peque" >Ayuda</h5>
+                                    <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    title="Descargar plantilla para la subida de información"
+                                  >
+                                  <mat-icon>download</mat-icon>
+                                  </button>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="row">
+                              <div class="col-md-8">
+                                  <div class="row text-end">
+                                      <div class="col-12">
+                                          <button type="button" class="btn btn-danger mx-1">
+                                              {{ "general.options.cancel" | translate }}
+                                          </button>
+          
+                                          <button class="btn btn-primary" type="submit">
+                                          <div class="btn-inner-icon">
+                                              <mat-icon>cloud_upload</mat-icon>
+                                              <span>Cargar archivo</span>
+                                          </div>
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                  </mat-card-content>
+              </div>
+          </mat-card>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
+

@@ -1,0 +1,119 @@
+<form ngNativeValidate #formArchivo="ngForm">
+  <div *ngIf="isUploading">
+    <span>Espere un momento por favor...</span>
+    <mat-progress-bar mode="indeterminate">
+      {{ uploadProgress }}%</mat-progress-bar
+    >
+  </div>
+  <ng-container *ngIf="!isUploading">
+    <div class="custom-input-file col-7" (click)="(fileInputMultiple.value)">
+      <input
+        #fileInputMultiple
+        type="file"
+        id="fichero-tarifas"
+        class="input-file"
+        [accept]="allowedExtensions"
+        (change)="selectFiles(fileInputMultiple.files)"
+        multiple
+        (click)="detectClick(fileInputMultiple.files)"
+      />
+      <img src="assets/images/icons/folder-open-1.svg" width="100px" />
+      <h5>Seleccione o arrastre sus documentos</h5>
+      <p class="file-drag-info">30MB tamaño permitido.</p>
+    </div>
+    <div style="overflow: hidden">
+      <form #docsForm="ngForm">
+        <div *ngIf="this.dataSource.data.length > 0">
+          <mat-table class="table-general" mat-table [dataSource]="dataSource">
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+              class="table-header"
+            ></mat-header-row>
+            <mat-row
+              *matRowDef="let row; let i = index; columns: displayedColumns"
+            ></mat-row>
+
+            <ng-container
+              matColumnDef="nombreOriginal"
+              matColumnDisplay="false"
+            >
+              <mat-header-cell *matHeaderCellDef> Archivo </mat-header-cell>
+              <mat-cell
+                *matCellDef="let row; let index = index"
+                class="border-normal"
+              >
+                {{ row.nombreOriginal }}&nbsp; &nbsp; <h5>{{  row.file.size / 1048576 | number : '1.2-2' }} MB</h5> 
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="documento">
+              <mat-header-cell *matHeaderCellDef>Documento</mat-header-cell>
+              <mat-cell
+                contenteditable="false"
+                *matCellDef="let row; let index = index"
+              >
+                <mat-form-field appearance="outline" style="width: 100%">
+                  <mat-select
+                    ngModel
+                    name="documento{{ index }}"
+                    placeholder="Documento"
+                    (selectionChange)="onChangeDocumento(index, $event.value)"
+                    required
+                  >
+                    <mat-option
+                      class="option"
+                      *ngFor="let option of documentos"
+                      [value]="option.documento"
+                      >{{ option.nombre }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="operaciones">
+              <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+              <mat-cell *matCellDef="let row; let index = index">
+                <button
+                  type="button"
+                  class="btn mx-3"
+                  (click)="deleteFile(index)"
+                  title="Remover"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+
+                <button
+                  type="button"
+                  class="btn"
+                  (click)="showFile(index)"
+                  title="Ver"
+                >
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+          </mat-table>
+        </div>
+        <br />
+        <div *ngIf="this.dataArchivos.length > 0" class="row mb-5">
+          <div class="col-md-12 text-end">
+            <button type="button" class="btn btn-danger mx-2" (click)="clear()">
+              Limpiar
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="uploadFiles(docsForm)"
+            >
+              <div class="btn-inner-icon">
+                <mat-icon>cloud_upload</mat-icon>
+                <span>Subir archivos</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</form>

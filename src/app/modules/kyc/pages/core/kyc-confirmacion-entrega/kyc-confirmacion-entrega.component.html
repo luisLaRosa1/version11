@@ -1,0 +1,123 @@
+<app-share-breadcrumb [breadcrumbs]="breadcrumbs"></app-share-breadcrumb>
+
+<mat-card class="mb-25 teggium-card" *ngIf="!loading">
+  <mat-card-header>
+    <div class="teggium-titulo-encabezado">
+      <h5 class="teggium-titulo">
+        Confirmación de entrega<span
+          *ngIf="readonlyModule"
+          class="title-readonlyModule"
+          >Modo consulta</span
+        >
+      </h5>
+      <app-kyc-encabezado [folio]="folio.folio"></app-kyc-encabezado>
+      <app-kyc-flujo-consulta
+        *ngIf="readonlyModule"
+        [flujoConsulta]="folio.flujoConsulta"
+      >
+      </app-kyc-flujo-consulta>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <form
+      [formGroup]="frmConfirmacionEntrega"
+      (submit)="confirmacionEntregaSubmit()"
+      autocomplete="false"
+    >
+      <div class="row mt-3" *ngIf="!readonlyModule">
+        <div class="col-md-4">
+          <div class="c-entregado">
+            <mat-slide-toggle color="accent" formControlName="entregado">
+              Entregado
+            </mat-slide-toggle>
+          </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-10 file-upload">
+              <div
+                class="custom-input-file col-7"
+                style="margin-top: 25px; margin-bottom: 35px"
+                (click)="(fileInputMultiple.value)"
+              >
+                <input
+                  #fileInputMultiple
+                  type="file"
+                  id="fichero-tarifas"
+                  class="input-file"
+                  [accept]="allowedExtensions"
+                  (change)="cargarMultiple(fileInputMultiple.files)"
+                  single
+                />
+                <img src="assets/images/icons/folder-open-1.svg" width="55px" />
+                <div *ngIf="fileName === ''">
+                  <h5>Seleccione un archivo</h5>
+                  <p class="file-drag-info">O arrastre el documento aquí...</p>
+                </div>
+                <div *ngIf="fileName !== ''">
+                  <p class="file-drag-info">Archivo seleccionado:</p>
+                  <h6>{{ fileName }}</h6>
+                </div>
+              </div>
+             
+            </div>
+  
+            <div class="col-md-2 buton-upload">
+              <button
+                class="btn btn-primary"
+                type="button"
+                extended
+                (click)="subirCarga()"
+              >
+                <div class="btn-inner-icon">
+                  <mat-icon>cloud_upload</mat-icon>
+                  <span>Cargar archivo</span>
+                </div>
+              </button>
+            </div>
+        </div>
+    
+      </div>
+
+      <div *ngIf="isUploading">
+        <span>Espere un momento por favor...</span>
+        <mat-progress-bar mode="indeterminate">
+          {{ uploadProgress }}%</mat-progress-bar
+        >
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-sm">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Comentarios</mat-label>
+            <textarea
+              matInput
+              [maxlength]="comentarioLength"
+              formControlName="comentarios"
+              spellcheck="true"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-3 text-end">
+        <div class="col-sm">
+          <button
+            *ngIf="!readonlyModule"
+            type="button"
+            class="btn btn-secondary mx-1"
+            (click)="click_reenviarDocumentos()"
+          >
+            Reenviar documentos
+          </button>
+          <button type="button" class="btn btn-danger mx-1" (click)="return()">
+            Cancelar
+          </button>
+          <button *ngIf="!readonlyModule" type="submit" class="btn btn-primary">
+            Continuar
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
